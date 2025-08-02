@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>장바구니</title>
+</head>
+<body>
+  <h2>🛒 내 장바구니</h2>
+
+  {% if messages %}
+    <ul>
+      {% for message in messages %}
+        <li>{{ message }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+
+  {% if selected_ingredients %}
+    <ul>
+      {% for ing in selected_ingredients %}
+        <li>
+          <!-- 삭제용 폼: 식재료 이름 클릭 시 삭제 -->
+          <form method="post" action="{% url 'food:delete_ingredient' ing.name %}" id="delete-form-{{ ing.id }}" style="display: inline;">
+            {% csrf_token %}
+            <input type="hidden" name="ingredient" value="{{ ing.name }}">
+              {% if ing.image %}
+                <img src="{{ ing.image.url }}" alt="{{ ing.name }}">
+              {% endif %}
+              {{ ing.name }}
+          </form>
+
+          <!-- 요리 추천 버튼: 오른쪽 '>' -->
+          <form method="get" action="{% url 'food:ingredient_ai' ing.name %}" style="display: inline;">
+            <button type="submit">></button>
+          </form>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>장바구니에 담긴 재료가 없습니다.</p>
+  {% endif %}
+</body>
+</html>
