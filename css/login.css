@@ -130,7 +130,6 @@ button {
 input {
     background: #F5F5F5;
     font-size: 15px;
-    color: #D9D9D9;
 }
 input::placeholder {
     color: #D9D9D9;  /* 원하는 색상으로 변경 */

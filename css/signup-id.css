@@ -95,8 +95,7 @@ button {
 
 input {
     background: #F5F5F5;
-    font-size: 20px;
-    color: #D9D9D9;
+    font-size: 15px;
     font-weight: 300;
 }
 input::placeholder {
