@@ -1,0 +1,60 @@
+* {
+    font-family: 'Pretendard';
+    font-style: normal;
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+@font-face {
+    font-family: 'HSSanTokki20-Regular';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2405@1.0/HSSanTokki20-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'TAEBAEKmilkyway';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/TAEBAEKmilkyway.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+#Container{
+    width: 393px;
+    height: 852px;
+    margin: 0 auto;
+    border: 1px solid var(--Gray-Primary, #d9d9d9);
+}
+
+.box{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 292px;
+    gap: 8px;
+}
+
+.title1{
+    color: #000;
+text-align: center;
+font-family: "HSSanTokki20-Regular";
+font-size: 64px;
+font-style: normal;
+font-weight: 400px;
+line-height: normal;
+}
+
+.title2{
+    color: #000;
+    text-align: center;
+    font-family: "TAEBAEKmilkyway";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400px;
+    line-height: normal;
+}
