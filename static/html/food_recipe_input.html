@@ -26,32 +26,40 @@
             </div>
         </div>
         <div id="mainBoard">
-            <img src="/jangbom/static/img/cook.svg" alt="cook">
-            <div class="promoText">
-                <p>쌍문동 두더지님,</p>
-                <p>어떤 요리를 만드실 건가요?</p>
+            <div class="contentArea">
+                <img src="/jangbom/static/img/cook.svg" alt="cook">
+                <div class="promoText">
+                    <p>쌍문동 두더지님,</p>
+                    <p>어떤 요리를 만드실 건가요?</p>
+                </div>
+                <div class="selectBtn">
+                    <form method="get" action="#">
+                        <button class="foodRecommend" type="submit"><p>어떤 요리 만들지 추천해줘</p></button>
+                    </form>
+                    <form method="get" action="#">
+                        <button class="otherIngredient" type="submit"><p>이전에 남은 식재료로 요리할래</p></button>
+                    </form>
+                </div>
+                <div class="recommendFood">
+                    <form method="get" action="#">
+                        <button class="box" type="submit"><p>오늘 저녁<br> 된장찌개 어때요?</p></button>
+                    </form>
+                    <form method="get" action="#">
+                        <button class="box" type="submit"><p>시원하게<br> 냉모밀 어때요?</p></button>
+                    </form>
+                    <form method="get" action="#">
+                        <button class="box" type="submit"><p>오늘은<br> 알리오 올리오 어때요?</p></button>
+                    </form>
+                </div>    
             </div>
-            <div class="selectBtn">
-                <form method="get" action="#">
-                    <button class="foodRecommend" type="submit"><p>어떤 요리 만들지 추천해줘</p></button>
-                </form>
-                <form method="get" action="#">
-                    <button class="otherIngredient" type="submit"><p>이전에 남은 식재료로 요리할래</p></button>
-                </form>
-            </div>
-            <div class="recommendFood">
-                <form method="get" action="#">
-                    <button class="box" type="submit"><p>오늘 저녁<br> 된장찌개 어때요?</p></button>
-                </form>
-                <form method="get" action="#">
-                    <button class="box" type="submit"><p>시원하게<br> 냉모밀 어때요?</p></button>
-                </form>
-                <form method="get" action="#">
-                    <button class="box" type="submit"><p>오늘은<br> 알리오 올리오 어때요?</p></button>
-                </form>
+            <div class="contentArea-newContent" style="display:none;">
+                <div class="promoText-new">
+                    <p>쌍문동 두더지님,</p>
+                    <p>어떤 요리를 만드실 건가요?</p>
+                </div>
             </div>
             <div id="gptBox">
-                <form method="post" class="inputBar">
+                <form method="post" class="inputBar" action="">
                     <input type="text" name="recipe" placeholder="OOO 만들건데, 필요한 재료 알려줘." value="" class="gptInput">
                     <button type="submit" class="gptCheck"><img src="/jangbom/static/img/arrow-up.svg"></button>
                 </form>
@@ -61,7 +69,7 @@
                 </div>
             </div>
         </div>
+        <img src="/jangbom/static/img/iOS.png" alt="keyboard" class="keyboard-icon">
     </div>
-    
 </body>
 </html>
