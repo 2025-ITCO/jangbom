@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/jangbom/static/css/food_recipe_input.css" />
+    <script src="/jangbom/static/js/food_recipe_input.js" defer></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="Container">
+        <img id="statusBar" src="/jangbom/static/img/iPhone Status bar.png"/>
+        <div id="pointBar">
+            <a href="/jangbom/static/html/main.html">
+                <img class="backIcon" src="/jangbom/static/img/chevron-left.svg"/>
+            </a>
+            <div class="userPoint">
+                <a href="#">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 25" fill="none">
+                        <path d="M10.5 22.5C5.25329 22.5 1 18.0228 1 12.5C1 6.97715 5.25329 2.5 10.5 2.5C15.7467 2.5 20 6.97715 20 12.5C20 18.0228 15.7467 22.5 10.5 22.5Z" stroke="#CCCCCC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M13 9.3C12.3637 8.78368 11.5695 8.5013 10.75 8.5C8.679 8.5 7 10.29 7 12.5C7 14.71 8.679 16.5 10.75 16.5C11.594 16.5 12.373 16.202 13 15.7" stroke="#CCCCCC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M10 2.5C14.333 2.5 23 3.5 23 12.5C23 21.5 14.333 22.5 10 22.5" stroke="#CCCCCC" stroke-width="2"/>
+                    </svg>
+                </a>
+                <div class="pointNum"><p>100</p></div>
+            </div>
+        </div>
+        <div id="mainBoard">
+            <img src="/jangbom/static/img/cook.svg" alt="cook">
+            <div class="promoText">
+                <p>쌍문동 두더지님,</p>
+                <p>어떤 요리를 만드실 건가요?</p>
+            </div>
+            <div class="selectBtn">
+                <form method="get" action="#">
+                    <button class="foodRecommend" type="submit"><p>어떤 요리 만들지 추천해줘</p></button>
+                </form>
+                <form method="get" action="#">
+                    <button class="otherIngredient" type="submit"><p>이전에 남은 식재료로 요리할래</p></button>
+                </form>
+            </div>
+            <div class="recommendFood">
+                <form method="get" action="#">
+                    <button class="box" type="submit"><p>오늘 저녁<br> 된장찌개 어때요?</p></button>
+                </form>
+                <form method="get" action="#">
+                    <button class="box" type="submit"><p>시원하게<br> 냉모밀 어때요?</p></button>
+                </form>
+                <form method="get" action="#">
+                    <button class="box" type="submit"><p>오늘은<br> 알리오 올리오 어때요?</p></button>
+                </form>
+            </div>
+            <div id="gptBox">
+                <form method="post" class="inputBar">
+                    <input type="text" name="recipe" placeholder="OOO 만들건데, 필요한 재료 알려줘." value="" class="gptInput">
+                    <button type="submit" class="gptCheck"><img src="/jangbom/static/img/arrow-up.svg"></button>
+                </form>
+                <div class="gptEx">
+                    <img src="/jangbom/static/img/mic.svg" class="mic" alt="mic">
+                    <img src="/jangbom/static/img/audio-lines.svg" class="audio" alt="audio">
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>
