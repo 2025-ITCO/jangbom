@@ -25,3 +25,8 @@ document.querySelectorAll('.backIcon').forEach(btn => {
     });
 });
 
+
+document.querySelector('.completeBtn').addEventListener('click', () => {
+    window.location.href = '/jangbom/static/html/splash.html';
+});
+
