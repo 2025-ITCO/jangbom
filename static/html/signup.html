@@ -35,7 +35,7 @@
                             <input id="id" name="id" placeholder="twodoor@email.com" required/>
                         </div>
                     </div>
-                    <button type="button" onclick="goStep(2)">다음으로</button>
+                    <button type="button" onclick="goStep(2)"><p>다음</p></button>
                 </div>
 
                 <!-- Step 2: 비밀번호 -->
@@ -58,23 +58,22 @@
                             </div>
                         </div>
                     </div>
-                    <button type="button" onclick="goStep(3)">다음으로</button>
+                    <button type="button" onclick="goStep(3)"><p>다음</p></button>
                 </div>
 
                 <!-- Step 3: 닉네임 -->
                 <div class="step" id="step3">
                     <div class="pageNum">3/3</div>
                     <div class="text"><p>사용하실 닉네임을 <br>입력해 주세요</p></div>
+
                     <div class="userBox">
-                        <label for="profile-upload" class="profileCircle"></label>
-                        <input type="file" id="profile-upload" name="profile" style="display: none;" />
+                        <p>닉네임</p>
                         <div class="userInput">
-                            <input id="user" name="nickname" placeholder="닉네임을 2자 이상 입력해 주세요" required/>
+                            <input id="user" placeholder="2자 이상 입력해 주세요"/>
                         </div>
                     </div>
-                    <button type="submit">완료</button>
+                    <button type="submit"><p>완료</p></button>
                 </div>
-
             </form>
         </div>
     </div>
