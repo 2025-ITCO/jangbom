@@ -1,30 +1,31 @@
-const chooseBoard = document.getElementById('chooseBoard');
+const mainBoard = document.getElementById('mainBoard');
 
-let isDown = false;   // 마우스 눌림 상태
-let startY;           // 마우스 클릭 시작 Y 좌표
-let scrollTop;        // 스크롤 시작 위치
+let isDragging = false;
+let startY;
+let scrollTop;
 
-chooseBoard.addEventListener('mousedown', (e) => {
-  isDown = true;
-  chooseBoard.classList.add('active'); // 필요하면 커서 변경용
-  startY = e.pageY - chooseBoard.offsetTop;
-  scrollTop = chooseBoard.scrollTop;
+mainBoard.addEventListener('mousedown', (e) => {
+  isDragging = true;
+  mainBoard.classList.add('dragging');
+  startY = e.pageY - mainBoard.offsetTop;
+  scrollTop = mainBoard.scrollTop;
+  e.preventDefault(); // 텍스트 선택 방지
 });
 
-chooseBoard.addEventListener('mouseleave', () => {
-  isDown = false;
-  chooseBoard.classList.remove('active');
+mainBoard.addEventListener('mouseleave', () => {
+  isDragging = false;
+  mainBoard.classList.remove('dragging');
 });
 
-chooseBoard.addEventListener('mouseup', () => {
-  isDown = false;
-  chooseBoard.classList.remove('active');
+mainBoard.addEventListener('mouseup', () => {
+  isDragging = false;
+  mainBoard.classList.remove('dragging');
 });
 
-chooseBoard.addEventListener('mousemove', (e) => {
-  if(!isDown) return;
+mainBoard.addEventListener('mousemove', (e) => {
+  if(!isDragging) return;
   e.preventDefault();
-  const y = e.pageY - chooseBoard.offsetTop;
-  const walk = (y - startY) * 1; // 스크롤 속도 조절 (1은 기본)
-  chooseBoard.scrollTop = scrollTop - walk;
+  const y = e.pageY - mainBoard.offsetTop;
+  const walk = y - startY;
+  mainBoard.scrollTop = scrollTop - walk;
 });
