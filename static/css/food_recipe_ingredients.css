@@ -163,7 +163,7 @@ input[type="checkbox"]:checked + .ingredient-btn {
     justify-content: space-between;
     align-items: flex-start;
     flex-shrink: 0;
-    background: #F5F5F5;
+    background: #FFF;
 }
 
 .bottomBoard p{
