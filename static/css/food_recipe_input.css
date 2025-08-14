@@ -120,12 +120,22 @@
     flex-shrink: 0;
     border-radius: 20px;
     background: #F5F5F5;
+    transition: background 0.3s;
+}
+
+.selectBtn button:hover {
+    background: #D7E5B4; /* 마우스 올렸을 때 색상 */
+    cursor: pointer;      /* 마우스 커서도 포인터로 변경 */
+}
+
+.selectBtn button:hover svg path {
+    stroke: #545454 !important;   
 }
 
 .foodRecommend, .otherIngredient {
     position: relative;
 }
-.foodRecommend img, .otherIngredient img{
+.foodRecommend svg, .otherIngredient svg{
     position:absolute;
     top:15px;
     left:21px;
