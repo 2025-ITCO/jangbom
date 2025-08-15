@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="../css/activity_history.css" />
+    <title>activity_history</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="box">
+        <div class="status-bar">
+          <!--상단바-->
+          <p>19:20</p>
+          <div class="status1">
+            <img class="status2" src="../img/reception.svg" alt="reception" />
+            <img class="status2" src="../img/wifi.svg" alt="wifi" />
+            <img class="status2" src="../img/battery.svg" alt="battery" />
+          </div>
+        </div>
+
+        <div class="app-top-bar">
+          <!--앱 자체 상단바-->
+          <img class="top-back" src="../img/chevron-left.svg" alt="back" />
+          <div class="top-point">
+            <img class="point" src="../img/point.svg" alt="point" />
+            <p class="mypoint">100</p>
+          </div>
+        </div>
+
+        <div class="myactivity-log">
+          <h3>세부 활동 내역</h3>
+        </div>
+
+        <div class="ah-list-fullset">
+          <div class="ah_search">
+            <div class="input-row">
+              <textarea class="input-rec" placeholder=" "></textarea>
+              <span class="input-placeholder"
+                >방문했던 상점명을 입력해주세요</span
+              >
+              <button class="input-rec-search" aria-label="확인">
+                <img src="../img/search.svg" alt="확인" />
+              </button>
+            </div>
+          </div>
+
+          <div class="search-filter">
+            <div class="range-dropdown">
+              <button
+                type="button"
+                class="range-btn"
+                id="rangeBtn"
+                aria-haspopup="listbox"
+                aria-expanded="false"
+                aria-controls="rangeMenu"
+              >
+                최근 1개월
+                <span class="caret" aria-hidden="true"></span>
+              </button>
+
+              <ul class="range-menu" id="rangeMenu" role="listbox" hidden>
+                <li
+                  class="range-item is-selected"
+                  role="option"
+                  aria-selected="true"
+                  data-value="1m"
+                >
+                  최근 1개월
+                </li>
+                <li class="range-item" role="option" data-value="3m">
+                  최근 3개월
+                </li>
+                <li class="range-item" role="option" data-value="6m">
+                  최근 6개월
+                </li>
+                <li class="range-item" role="option" data-value="1y">
+                  최근 1년
+                </li>
+                <li class="range-item" role="option" data-value="all">
+                  전체 보기
+                </li>
+              </ul>
+            </div>
+            <p class="lately">최신순</p>
+            <p class="abc">가나다순</p>
+          </div>
+
+          <div class="list-set">
+            <div class="recipes_list">
+              <img
+                class="recipes_img"
+                src="../img/footprints(gray).svg"
+                alt="즐겨찾기"
+              />
+              <div class="menu_item">
+                <span class="menu_name">제로마트</span>
+                <p class="menu_date">2025.08.13 15:00</p>
+              </div>
+              <img
+                class="see-detail"
+                src="../img/chevron-right(gray).svg"
+                alt="상세보기"
+              />
+            </div>
+            <div class="recipes_list">
+              <img
+                class="recipes_img"
+                src="../img/footprints(gray).svg"
+                alt="즐겨찾기"
+              />
+              <div class="menu_item">
+                <span class="menu_name">우이시장</span>
+                <p class="menu_date">2025.08.12 14:00</p>
+              </div>
+              <img
+                class="see-detail"
+                src="../img/chevron-right(gray).svg"
+                alt="상세보기"
+              />
+            </div>
+            <div class="recipes_list">
+              <img
+                class="recipes_img"
+                src="../img/footprints(gray).svg"
+                alt="즐겨찾기"
+              />
+              <div class="menu_item">
+                <span class="menu_name">쌍문홈마트</span>
+                <p class="menu_date">2025.08.11 14:00</p>
+              </div>
+              <img
+                class="see-detail"
+                src="../img/chevron-right(gray).svg"
+                alt="상세보기"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="bottom-nav">
+          <div class="bottom-nav-item">
+            <img src="../img/house.svg" alt="홈" />
+            <span class="bottom-nav-item-title">홈</span>
+          </div>
+          <div class="bottom-nav-item">
+            <img src="../img/footprints.svg" alt="내 활동" />
+            <span class="bottom-nav-item-title">내 활동</span>
+          </div>
+          <div class="bottom-nav-item">
+            <img src="../img/icons_coin.svg" alt="포인트" />
+            <span class="bottom-nav-item-title">포인트</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="../js/activity_history.js" defer></script>
+  </body>
+</html>

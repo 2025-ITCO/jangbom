@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="../css/getPoint.css" />
+    <title>getPoint-도착완료</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="box">
+        <!-- 상단바(고정) -->
+        <div class="status-bar">
+          <p>19:20</p>
+          <div class="status1">
+            <img class="status2" src="../img/reception.svg" alt="reception" />
+            <img class="status2" src="../img/wifi.svg" alt="wifi" />
+            <img class="status2" src="../img/battery.svg" alt="battery" />
+          </div>
+        </div>
+
+        <!-- 앱 자체 상단바(고정) -->
+        <div class="app-top-bar">
+          <img class="top-back" src="../img/chevron-left.svg" alt="back" />
+          <div class="top-point">
+            <img class="point" src="../img/point.svg" alt="point" />
+            <p class="mypoint">100</p>
+          </div>
+        </div>
+
+        <!-- 본문만 스크롤 영역 -->
+        <main class="app-body">
+          <div class="circle-wrap">
+            <div class="circle-point">
+              <span class="emoji-newpoint">도착 완료</span>
+              <p class="emoji-totalpoint">총 10분, 800m 걸었어요</p>
+            </div>
+            <img class="emoji" src="../img/박.svg" alt="축하" />
+          </div>
+
+          <div class="about-point">
+            <div class="point-history">쌍문동 두더지님이 해냈어요!</div>
+            <div class="point-history-set">
+              <p>✔️ 배달 포장 없는 장 보기</p>
+              <p>✔️ 탄소 없는 도보 쇼핑</p>
+            </div>
+          </div>
+
+          <div class="section-title">
+            <div class="section-title2">
+              입구 사진 확인하기
+              <img
+                class="center-arrow"
+                src="../img/chevron-down.svg"
+                alt="more"
+              />
+            </div>
+            <div class="mart-pic">
+              <img src="../img/image 1.svg" alt="입구 사진" />
+            </div>
+            <div class="not-this-mart">
+              <img src="../img/circle-question-mark.svg" />
+              <p>사진과 도착지가 다르다면?</p>
+            </div>
+          </div>
+
+          <h4 class="section-title2 mt-6">
+            장바구니 체크리스트
+            <img
+              class="center-arrow"
+              src="../img/chevron-down.svg"
+              alt="more"
+            />
+          </h4>
+          <div class="checklist-card">
+            <label class="cl-item">
+              <div>
+                <span class="cl-name">청경채</span>
+                <span class="tip-pill">구매 TIP</span>
+              </div>
+              <input type="checkbox" class="cl-check" />
+            </label>
+            <label class="cl-item">
+              <div>
+                <span class="cl-name">양파</span>
+                <span class="tip-pill">구매 TIP</span>
+              </div>
+              <input type="checkbox" class="cl-check" />
+            </label>
+            <label class="cl-item">
+              <div>
+                <span class="cl-name">마늘</span>
+                <span class="tip-pill">구매 TIP</span>
+              </div>
+              <input type="checkbox" class="cl-check" />
+            </label>
+            <label class="cl-item">
+              <div>
+                <span class="cl-name">두부</span>
+                <span class="tip-pill">구매 TIP</span>
+              </div>
+              <input type="checkbox" class="cl-check" />
+            </label>
+          </div>
+        </main>
+
+        <!-- 하단 고정 CTA -->
+        <footer class="bottom-cta">
+          <button type="button" class="refreshBtn">
+            구매 인증하고 포인트 받기
+          </button>
+        </footer>
+      </div>
+    </div>
+
+    <!-- 모달은 문서 최상위에 유지 -->
+    <div class="re-start-modal hidden">
+      <div class="modal-content">
+        <img class="closeBtn" src="../img/chevron-x(gray).svg" alt="닫기" />
+        <h2 class="modal-title">괜찮아요<br />다시 안내해드릴게요!</h2>
+        <p>
+          GPS 범위의 오차 혹은 사진 변경의<br />이유로 불일치하는 경우가 있어요
+        </p>
+        <div class="modal-buttons">
+          <button class="callBtn">상점에 전화걸기</button>
+          <button class="renavigationBtn">다시 길 찾기</button>
+        </div>
+      </div>
+    </div>
+    <script src="../js/getPoint.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="../css/my_recipes.css" />
+    <title>my_recipes</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="box">
+        <div class="status-bar">
+          <!--상단바-->
+          <p>19:20</p>
+          <div class="status1">
+            <img class="status2" src="../img/reception.svg" alt="reception" />
+            <img class="status2" src="../img/wifi.svg" alt="wifi" />
+            <img class="status2" src="../img/battery.svg" alt="battery" />
+          </div>
+        </div>
+
+        <div class="app-top-bar">
+          <!--앱 자체 상단바-->
+          <img class="top-back" src="../img/chevron-left.svg" alt="back" />
+          <div class="top-point">
+            <img class="point" src="../img/lucide.svg" alt="point" />
+            <p class="mypoint">100 P</p>
+          </div>
+        </div>
+
+        <div class="myactivity-log">
+          <h3>요리법 보관함</h3>
+        </div>
+
+        <div class="recipes-list-fullset">
+          <div class="recipes_search">
+            <div class="input-row">
+              <textarea class="input-rec" placeholder=" "></textarea>
+              <span class="input-placeholder"
+                >찾으시는 요리법을 검색하세요</span
+              >
+              <button class="input-rec-search" aria-label="확인">
+                <img src="../img/search.svg" alt="확인" />
+              </button>
+            </div>
+          </div>
+
+          <div class="search-filter">
+            <p class="lately">최신순</p>
+            <p class="abc">가나다순</p>
+          </div>
+
+          <div class="list-set">
+            <div class="recipes_list">
+              <img class="recipes_img" src="../img/album.svg" alt="즐겨찾기" />
+              <div class="menu_item">
+                <span class="menu_name">토마토 달걀 볶음</span>
+                <p class="menu_date">2025.08.13 저장</p>
+              </div>
+              <img
+                class="see-detail"
+                src="../img/chevron-right(gray).svg"
+                alt="상세보기"
+              />
+            </div>
+            <div class="recipes_list">
+              <img class="recipes_img" src="../img/album.svg" alt="즐겨찾기" />
+              <div class="menu_item">
+                <span class="menu_name">대파 닭안심 구이</span>
+                <p class="menu_date">2025.08.12 저장</p>
+              </div>
+              <img
+                class="see-detail"
+                src="../img/chevron-right(gray).svg"
+                alt="상세보기"
+              />
+            </div>
+            <div class="recipes_list">
+              <img class="recipes_img" src="../img/album.svg" alt="즐겨찾기" />
+              <div class="menu_item">
+                <span class="menu_name">해물파전</span>
+                <p class="menu_date">2025.08.11 저장</p>
+              </div>
+              <img
+                class="see-detail"
+                src="../img/chevron-right(gray).svg"
+                alt="상세보기"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="bottom-nav">
+          <div class="bottom-nav-item">
+            <img src="../img/house.svg" alt="홈" />
+            <span class="bottom-nav-item-title">홈</span>
+          </div>
+          <div class="bottom-nav-item">
+            <img src="../img/footprints.svg" alt="내 활동" />
+            <span class="bottom-nav-item-title">내 활동</span>
+          </div>
+          <div class="bottom-nav-item">
+            <img src="../img/icons_coin.svg" alt="포인트" />
+            <span class="bottom-nav-item-title">포인트</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="../js/my_recipes.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="../css/martRoute.css" />
+    <title>martRoute</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="box">
+        <div class="status-bar">
+          <p>19:20</p>
+          <div class="status1">
+            <img class="status2" src="../img/reception.svg" alt="reception" />
+            <img class="status2" src="../img/wifi.svg" alt="wifi" />
+            <img class="status2" src="../img/battery.svg" alt="battery" />
+          </div>
+        </div>
+
+        <div class="app-top-bar">
+          <img class="top-back" src="../img/chevron-left.svg" alt="back" />
+          <div class="top-point">
+            <img class="point" src="../img/lucide.svg" alt="point" />
+            <p class="mypoint">100 P</p>
+          </div>
+        </div>
+
+        <main class="app-body">
+          <div class="mart-info">
+            <div class="mart-title">
+              <h4 class="mart-title2">제로마트</h4>
+              <p class="mart-title3">서울 도봉구 도봉고 113길 41</p>
+              <p class="mart-dis">243m</p>
+            </div>
+
+            <img class="mart-pic" src="../img/image 1.svg" alt="mart-pic" />
+
+            <div class="circle-wrap">
+              <div class="middle-line"></div>
+              <div class="circle-time">
+                <span class="runner-time">10분</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="mart-due">현재 위치에서 10분만 걸어가면 돼요!</div>
+
+          <div class="app-bottom-bar">
+            <div class="bar-content">
+              <div class="bar-list">
+                <div class="mart-dropdown">
+                  <div class="bar-title">
+                    업체 정보
+                    <img
+                      class="more-icon"
+                      src="../img/chevron-down.svg"
+                      alt="more"
+                    />
+                  </div>
+                  <div class="mart-info2">
+                    <label class="mi-item">
+                      <img src="../img/clock.svg" alt="time" />
+                      <span class="mi-name">현재 영업 중</span>
+                    </label>
+                    <label class="mi-item">
+                      <img src="../img/store.svg" alt="store" />
+                      <span class="mi-name">서울사랑상품권, 주차 가능</span>
+                    </label>
+                    <label class="mi-item">
+                      <img src="../img/phone.svg" alt="phone" />
+                      <span class="mi-name">010-6688-6688</span>
+                    </label>
+                    <label class="mi-item">
+                      <img src="../img/map-pin.svg" alt="map" />
+                      <span class="mi-name">서울 도봉구 도봉고 113길 41</span>
+                    </label>
+                  </div>
+                </div>
+
+                <div class="mart-dropdown">
+                  <div class="bar-title">
+                    장바구니
+                    <img
+                      class="more-icon"
+                      src="../img/chevron-down.svg"
+                      alt="more"
+                    />
+                  </div>
+                  <div class="mat-block-set">
+                    <div class="item-grid">
+                      <div class="item">
+                        <img
+                          class="item-pic"
+                          src="../img/청경채.svg"
+                          alt="재료1"
+                        />
+                        청경채
+                      </div>
+                      <div class="item">
+                        <img
+                          class="item-pic"
+                          src="../img/양파.svg"
+                          alt="재료2"
+                        />
+                        양파
+                      </div>
+                      <div class="item">
+                        <img
+                          class="item-pic"
+                          src="../img/마늘.svg"
+                          alt="재료3"
+                        />
+                        마늘
+                      </div>
+                      <div class="item">
+                        <img
+                          class="item-pic"
+                          src="../img/두부.svg"
+                          alt="재료4"
+                        />
+                        두부
+                      </div>
+                      <div class="item">
+                        <div class="item-pic"></div>
+                        느타리 버섯
+                      </div>
+                      <div class="item">
+                        <div class="item-pic"></div>
+                        느타리 버섯
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+
+        <footer class="start">
+          <span class="start-point">
+            <img src="../img/coins.svg" alt="coins" /> 10 포인트 적립
+          </span>
+          <button class="startBtn">출발하기</button>
+        </footer>
+
+        <div
+          class="modal"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="closed-title"
+        >
+          <div class="modal-content">
+            <img
+              class="closed"
+              src="../img/frown.svg"
+              alt=""
+              aria-hidden="true"
+            />
+            <p id="closed-title" class="modal-title">
+              현재 운영 중인 상점이 없어요
+            </p>
+            <p class="modal-detail">
+              담긴 재료는 장바구니에 저장되므로<br />다음에 시도해주세요
+            </p>
+            <div class="modal-footer">
+              <button type="button" class="modal-exit">홈으로</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="../js/martRoute.js" defer></script>
+  </body>
+</html>

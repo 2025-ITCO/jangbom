@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="../css/recipe_ingredients_search.css" />
+    <title>recipe_ingredients_search</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="box">
+        <div class="status-bar">
+          <!--상단바-->
+          <p>19:20</p>
+          <div class="status1">
+            <img class="status2" src="../img/reception.svg" alt="reception" />
+            <img class="status2" src="../img/wifi.svg" alt="wifi" />
+            <img class="status2" src="../img/battery.svg" alt="battery" />
+          </div>
+        </div>
+
+        <div class="app-top-bar">
+          <!--앱 자체 상단바-->
+          <img class="top-back" src="../img/chevron-x.svg" alt="close" />
+        </div>
+
+        <h3 class="add-mat-title">재료 직접 담기</h3>
+        <p>따로 구매할 재료가 있다면 직접 추가해보세요!</p>
+
+        <div class="ah_search">
+          <div class="input-row">
+            <textarea class="input-rec" placeholder=" "></textarea>
+            <button class="input-rec-search" aria-label="확인">
+              <img src="../img/search.svg" alt="확인" />
+            </button>
+          </div>
+        </div>
+
+        <section class="recent-search">
+          <div class="recent-search-head">
+            <h4>최근 검색어</h4>
+            <button class="recent-clear" type="button">전체삭제</button>
+          </div>
+
+          <div class="recent-chips">
+            <!-- 예시 키워드; 필요만큼 반복 -->
+            <button class="chip" type="button">
+              복숭아 <span class="chip-x" aria-hidden="true">×</span>
+            </button>
+            <button class="chip" type="button">
+              된장 <span class="chip-x" aria-hidden="true">×</span>
+            </button>
+            <button class="chip" type="button">
+              옥수수 <span class="chip-x" aria-hidden="true">×</span>
+            </button>
+            <button class="chip" type="button">
+              우유 <span class="chip-x" aria-hidden="true">×</span>
+            </button>
+            <button class="chip" type="button">
+              고추장 <span class="chip-x" aria-hidden="true">×</span>
+            </button>
+            <button class="chip" type="button">
+              멸치 <span class="chip-x" aria-hidden="true">×</span>
+            </button>
+          </div>
+        </section>
+
+        <!-- 결과 없음 토스트(모달) : 기본은 숨김, .show를 붙이면 보임 -->
+        <div
+          class="toast"
+          id="noResultToast"
+          aria-live="polite"
+          aria-hidden="true"
+        >
+          해당되는 검색어가 없습니다
+        </div>
+
+        <div class="add-mat">
+          <div class="add-mat-item">
+            <button class="add-item-done">완료</button>
+          </div>
+        </div>
+
+        <div class="dialpad hidden" id="dialpad">
+          <img src="../img/iOS-Keypad.svg" />
+        </div>
+      </div>
+    </div>
+    <script src="../js/recipe_ingredients_search.js" defer></script>
+  </body>
+</html>
