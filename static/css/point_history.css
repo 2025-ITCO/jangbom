@@ -38,14 +38,6 @@
     align-items: center;
 }
 
-.homeBtn p{
-    color: #D9D9D9;
-    text-align: center;
-    font-size: 18px;
-    font-weight: 500;
-    line-height: normal;
-}
-
 
 .userBar{
     display: inline-flex;
@@ -91,8 +83,8 @@ user-select: none;
     display: flex;
     align-items: center;
     flex-direction: column;
-    padding: 12px 78px;
-    gap: 10px;
+    padding: 12px 0;
+    gap: 12px;
 }
 
 /* 멘트부분 */
@@ -101,9 +93,7 @@ user-select: none;
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    gap: 7px;
-}
-.text1{
+
     color: #545454;
     text-align: center;
     font-family: "HSSanTokki20-Regular";
@@ -111,149 +101,173 @@ user-select: none;
     font-weight: 400;
     line-height: normal;
 }
-.text2{
-    color: #545454;
-    text-align: center;
-    font-size: 15px;
-    font-weight: 500;
-    line-height: normal;
-}
 
-
-/* 포인트 원 */
-.pointCircle {
-    width: 103px;
-    height: 103px;
-    gap: 8px;
-    background-color: #BEDA78;
-    border-radius: 50%; /* 원형 */
-    display: flex;
-    align-items: center; /* 세로 중앙정렬 */
-    justify-content: center; /* 가로 중앙정렬 */
-}
-
-.point_num {
-    color: #FFF;
-    text-align: center;
-    font-size: 24px;
-    font-weight: 500;
-    line-height: normal;
-}
-
-/* 닉네임&랭킹 */
-.user_info {
-    display: flex;
-    max-width: 250px;
-    flex-direction: column;
-    gap: 4px; 
-    white-space: nowrap;
-}
-
-.user_info_top {
-    display: flex;
-    align-items: center;
-    gap: 6px; 
-}
-
-.nickname {
-    color: #000;
-    text-align: center;
-    font-size: 15px;
-    font-weight: 600;
-    line-height: normal;
-}
-
-.user_lank {
-    display: flex;
-    padding: 4px 14px;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    border-radius: 25px;
-    background: #F5F5F5;
-}
-
-.user_lank p {
-    color: #545454;
-    text-align: center;
-    font-size: 15px;
-    font-weight: 500;
-    line-height: normal;
-}
-
-.user_address {
-    color: #A5A5A5;
-    font-size: 15px;
-    font-weight: 400;
-    line-height: normal;
-}
 
 /* 장 보러 가기 버튼 */
 .food_buy{
     display: flex;
-    padding: 5px 80px;
+    padding: 5px 20px;
     justify-content: center;
     align-items: center;
-    gap: 10px;
     border-radius: 15px;
     background: #F5F5F5;
-    margin-top: 11px;
 
     color: #545454;
     text-align: center;
     font-size: 16px;
     font-weight: 600;
     line-height: normal;
-    white-space: nowrap;
 }
+
+
+
+
+/* 옵션 컨테이너 */
+.options {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+/* 드롭다운 버튼 */
+
+.dropdown{
+    position: relative;
+}
+
+.dropdownNow {
+    width: 100%;
+    padding: 10px;
+    /* border: 1px solid #ccc; */
+    border-radius: 10px;
+    background: #fff;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+
+    color: #545454;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: normal;
+}
+
+button{
+    background: #fff;
+}
+
+/* 드롭다운 메뉴 */
+.dropdown-menu {
+    display: none;  /* 처음엔 숨김 */
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: #fff;
+    box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.04);
+    list-style: none;
+    z-index: 10;
+}
+
+.dropdown-menu li {
+    padding: 7px;
+    cursor: pointer;
+
+    color: #545454;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.dropdown-menu li:hover {
+    background-color: #f0f0f0;
+}
+
+/* 최신순/금액순 텍스트 */
+
+.sort-label{
+    margin-left: 5px;
+}
+.sort-label input[type="radio"] {
+    display: none; /* 라디오는 숨김 */
+}
+
+.sort-label span {
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 10px;
+    transition: background 0.2s, color 0.2s;
+
+    color: #545454;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.sort-label input[type="radio"]:checked + span {
+    background-color: #BEDA78; /* 선택 시 배경 */
+    color: white;               /* 선택 시 글자 색상 */
+}
+
+
 
 
 /* 메인-2 */
 .board2{
     position: absolute;
-    top: 410px;
+    top: 250px;
     bottom:65px;
     width: 100%;
     background: #F5F5F5;
-    padding: 36px 24px 0 24px;
+    padding: 25px 30px;
+
+    overflow-y: auto;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE, Edge */
+}
+.board2::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
 }
 
-.point_history{
+.shopping_list{
     display: flex;
-    width: 345px;
-    padding: 11px 16px;
-    justify-content:space-between;
+    padding: 15px;
+    flex-direction: row;
     align-items: center;
+    justify-content:space-around;
+    gap: 111px;
     border-radius: 20px;
     background: #FFF;
+    margin-bottom: 11px;
+}
+.martDate{
+    display: flex;
+    flex-direction: column;
+}
 
+.martName{
     color: #545454;
-
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 500;
     line-height: normal;
 }
-
-.point_ranking{
-        display: flex;
-    width: 345px;
-    padding: 11px 16px;
-    justify-content:space-between;
-    align-items: center;
-    border-radius: 20px;
-    background: #FFF;
-    margin-top: 10px;
-
-    color: #545454;
-
-    font-size: 18px;
+.visitDate{
+    color: #D9D9D9;
+    text-align: center;
+    font-size: 15px;
+    font-weight: 300;
+    line-height: normal;
+}
+.martPoint{
+    color: #ACCE58;
+    text-align: center;
+    font-size: 20px;
     font-weight: 500;
     line-height: normal;
 }
-
-
-
-
 
 
 
