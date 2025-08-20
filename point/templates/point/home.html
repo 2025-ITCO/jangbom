@@ -1,0 +1,23 @@
+{% load humanize %}
+
+<a href="javascript:history.back()">◁</a>
+<a href="{% url 'food:cart_view' %}">🧺
+        {% if cart_items_count == 0 %}
+        {% else %}
+            {{ cart_items_count }}
+        {% endif %}
+    </a>
+    <a href="{% url 'point:barcode' %}">바코드</a>
+    {{ total_point }}P
+
+<h2>일주일 동안 {{ weekly_points|intcomma }}포인트나 모았어요!</h2>
+<div>{{ total_points|intcomma }} 포인트</div>
+
+<p>
+    {{ user.nickname|default:user.username }} - {{ user.addr_level3|default:"" }}
+    {% if my_rank %} {{ my_rank }}등{% else %} (랭킹 없음){% endif %}
+</p>
+
+<a href="{% url 'food:main' %}">장 보러 가기</a>
+<a href="{% url 'point:point_history' %}">나의 적립 내역</a>
+<a href="{% url 'point:point_ranking' %}">도봉구 포인트 랭킹</a>

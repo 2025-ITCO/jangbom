@@ -1,0 +1,73 @@
+<a href="javascript:history.back()">◁</a>
+<a href="{% url 'food:cart_view' %}">🧺
+        {% if cart_items_count == 0 %}
+        {% else %}
+            {{ cart_items_count }}
+        {% endif %}
+    </a>
+    <a href="{% url 'point:barcode' %}">바코드</a>
+    {{ total_point }}P
+
+<h2>나의 적립 내역</h2>
+<a href="{% url 'food:main' %}">장 보러 가기</a><br><br>
+
+{% with period=selected.period|default:'1m' sort=selected.sort|default:'latest' %}
+<form method="get" style="display:flex; gap:12px; align-items:center; margin-bottom:12px;">
+    <!-- 기간 -->
+    <select name="period" onchange="this.form.submit()">
+        <option value="1m"  {% if period == '1m'  %}selected{% endif %}>최근 1개월</option>
+        <option value="3m"  {% if period == '3m'  %}selected{% endif %}>최근 3개월</option>
+        <option value="6m"  {% if period == '6m'  %}selected{% endif %}>최근 6개월</option>
+        <option value="1y"  {% if period == '1y'  %}selected{% endif %}>최근 1년</option>
+        <option value="all" {% if period == 'all' %}selected{% endif %}>전체</option>
+    </select>
+
+    <!-- 정렬 -->
+    <label>
+        <input type="radio" name="sort" value="latest" onchange="this.form.submit()" {% if sort == 'latest' %}checked{% endif %}>
+        최신순
+    </label>
+    <label>
+        <input type="radio" name="sort" value="points" onchange="this.form.submit()" {% if sort == 'points' %}checked{% endif %}>
+        금액순
+    </label>
+</form>
+{% endwith %}
+
+<!-- 요약(있으면 표시) -->
+{% if summary %}
+    <div style="margin-bottom:8px;">
+        총 적립: {{ summary.total_points|default:0 }} P / {{ summary.count|default:0 }}건
+    </div>
+{% endif %}
+
+<table>
+    <thead>
+        <tr>
+            <th>일자</th>
+            <th>마트</th>
+            <th>포인트</th>
+            <th>세부</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for log in logs %}
+        <tr>
+            <td>{{ log.visited_at|date:"Y.m.d" }}</td>
+            <td>
+                {% if log.shopping_list.market %}
+                    {{ log.shopping_list.market.name }}
+                {% else %}
+                    -
+                {% endif %}
+            </td>
+            <td>+{{ log.point_earned }}P</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="4">내역이 없습니다.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+

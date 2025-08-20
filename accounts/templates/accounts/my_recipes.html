@@ -1,0 +1,89 @@
+<a href="javascript:history.back()">◁</a>
+<a href="{% url 'food:cart_view' %}">🧺
+        {% if cart_items_count == 0 %}
+        {% else %}
+            {{ cart_items_count }}
+        {% endif %}
+    </a>
+    <a href="{% url 'point:barcode' %}">바코드</a>
+    {{ total_point }}P
+
+<h2>요리법 보관함</h2>
+
+<!-- 검색 폼 -->
+<form method="get" action="">
+    <input type="hidden" name="sort" value="{{ sort|default:'latest' }}">
+    <input type="text" name="q" value="{{ q|default:'' }}" placeholder="검색어를 입력하세요">
+    <button type="submit">검색</button>
+</form>
+
+<!-- 정렬 폼 -->
+<form method="get" action="">
+    <input type="hidden" name="q" value="{{ q|default:'' }}">
+    <label>
+        <input type="radio" name="sort" value="latest" {% if sort == 'latest' %}checked{% endif %} onchange="this.form.submit()">
+        최신순
+    </label>
+    <label>
+        <input type="radio" name="sort" value="alpha" {% if sort == 'alpha' %}checked{% endif %} onchange="this.form.submit()">
+        가나다순
+    </label>
+</form>
+
+<hr>
+
+<!-- 레시피 목록 -->
+{% if recipes %}
+<ul id="recipe-list">
+    {% for recipe in recipes %}
+        <li>
+        <div class="recipe-item" data-id="{{ recipe.id }}" data-title="{{ recipe.title|escape }}">
+            <span class="toggle">▶</span>
+            <span class="title">{{ recipe.title }}</span>
+            <small class="created">({{ recipe.created_at|date:"Y-m-d" }})</small>
+        </div>
+        <div class="recipe-detail" id="recipe-detail-{{ recipe.id }}" style="display:none;"></div>
+        </li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>저장된 레시피가 없습니다.</p>
+{% endif %}
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    document.querySelectorAll(".recipe-item").forEach(item => {
+        item.addEventListener("click", function() {
+        const recipeId = this.getAttribute("data-id");
+        const detailDiv = document.getElementById("recipe-detail-" + recipeId);
+        const toggleEl = this.querySelector(".toggle");   // ▶ / ▼ 만 바꿈
+
+        if (detailDiv.style.display === "block") {
+            // 닫기
+            detailDiv.style.display = "none";
+            toggleEl.textContent = "▶";
+            return;
+        }
+
+        // 처음 열 때만 fetch
+        if (!detailDiv.innerHTML.trim()) {
+            fetch(`/accounts/recipes/${recipeId}/ajax/`)
+            .then(res => res.json())
+            .then(data => {
+                detailDiv.innerHTML = `
+                <p><strong>${data.title}</strong></p>
+                <p>요리법 설명</p>
+                <pre>${data.description}</pre>
+                `;
+                detailDiv.style.display = "block";
+                toggleEl.textContent = "▼";
+            });
+        } else {
+            // 이미 내용 있으면 그대로 보여주기
+            detailDiv.style.display = "block";
+            toggleEl.textContent = "▼";
+        }
+        });
+    });
+});
+</script>

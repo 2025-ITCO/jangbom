@@ -1,0 +1,52 @@
+<body>
+  <!--상단바-->
+<a href="{% url 'food:ingredient_input' %}">◁</a>
+<a href="{% url 'food:cart_view' %}">🧺
+    {% if cart_items_count == 0 %}
+        {% else %}
+            {{ cart_items_count }}
+        {% endif %}
+    </a>
+    <a href="{% url 'point:barcode' %}">바코드</a>
+    {{ total_point }}P
+  <h2>재료 선택 완료</h2>
+  <p>장 보러 갈 준비 되었나요?</p>
+
+{% if shopping_list.shoppinglistingredient_set.exists %}
+  <ul>
+    {% for item in shopping_list.shoppinglistingredient_set.all %}
+      <li>
+        <form method="post"
+              action="{% url 'food:delete_ingredient' item.ingredient.name %}"
+              id="delete-form-{{ item.ingredient.id }}"
+              style="display:inline;">
+          {% csrf_token %}
+          <input type="hidden" name="ingredient" value="{{ item.ingredient.name }}">
+          {% if item.ingredient.image %}
+            <img src="{{ item.ingredient.image.url }}" alt="{{ item.ingredient.name }}"
+                 style="width:50px;height:50px;object-fit:cover;margin-right:10px;">
+          {% endif %}
+          <br>{{ item.ingredient.name }}
+        </form>
+
+        <!-- 여기만 수정 -->
+        <a href="{% url 'food:ingredient_idea_page' %}?name={{ item.ingredient.name|urlencode }}">&gt;</a>
+      </li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <p>장바구니에 담긴 재료가 없습니다.</p>
+{% endif %}
+  <br><hr><br>
+
+  <a href="{% url 'market:edit_market_filter_ingredient' %}">상점 필터 설정 →</a>
+    <form action="{% url 'market:nearest_market' %}" method="get">
+      <button type="submit">장 보러 가기</button>
+    </form>
+
+  <br><hr><br>
+<a href="{% url 'food:main' %}">홈</a> |
+<a href="{% url 'accounts:activity_log' %}">내 활동</a> |
+<a href="{% url 'point:point_home' %}">포인트</a> 
+</body>
+</html>

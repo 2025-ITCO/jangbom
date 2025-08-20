@@ -1,0 +1,29 @@
+<a href="javascript:history.back()">◁</a>
+<a href="{% url 'food:cart_view' %}">🧺
+        {% if cart_items_count == 0 %}
+        {% else %}
+            {{ cart_items_count }}
+        {% endif %}
+    </a>
+    <a href="{% url 'point:barcode' %}">바코드</a>
+    {{ total_point }}P
+
+<h2>최근 구매한 식재료 목록</h2>
+
+<form method="post">
+    {% csrf_token %}
+
+    {% if ingredients %}
+        <div>
+            {% for item in ingredients %}
+            <label style="display:block; margin:4px 0;">
+                <input type="checkbox" name="ingredient_ids" value="{{ item.ingredient.id }}">
+                {{ item.ingredient.name }}
+            </label>
+            {% endfor %}
+        </div>
+        <button type="submit">선택 완료</button>
+    {% else %}
+        <p>장바구니에 재료가 없습니다.</p>
+    {% endif %}
+</form>

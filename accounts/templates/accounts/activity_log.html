@@ -1,0 +1,29 @@
+{% load humanize %}
+
+<a href="javascript:history.back()">◁</a>
+<a href="{% url 'food:cart_view' %}">🧺
+        {% if cart_items_count == 0 %}
+        {% else %}
+            {{ cart_items_count }}
+        {% endif %}
+    </a>
+    <a href="{% url 'point:barcode' %}">바코드</a>
+    {{ total_point }}P
+
+<h2>내 활동 내역</h2>
+
+<p>{{ user.nickname }} - {{ user.addr_level3|default:"" }}</p>
+
+<p>장봄 횟수: {{ total_logs }}</p>
+<p>누적 걸음수: {{ total_steps|intcomma }} 걸음</p>
+<p>CO₂ 절감량: {{ co2_saved_kg }} kg</p>
+<p>랭킹: {% if user_rank %}{{ user_rank }}위{% else %}-{% endif %}</p>
+
+<a href="{% url 'accounts:my_recipes' %}">요리법 보관함</a><br>
+<a href="{% url 'accounts:activity_history' %}">세부 활동 내역</a><br>
+<a href="{% url 'food:select_recent_ingredients' %}">남은 식재료 활용법 추천</a>
+
+<br><hr><br>
+<a href="{% url 'food:main' %}">홈</a> |
+<a href="{% url 'accounts:activity_log' %}">내 활동</a> |
+<a href="{% url 'point:point_home' %}">포인트</a>

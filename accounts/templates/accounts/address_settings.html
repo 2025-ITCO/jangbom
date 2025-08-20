@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <title>주소 설정</title>
+</head>
+<body>
+  <a href="{% url 'food:main' %}">←</a>
+  <h2>주소 설정</h2>
+
+  <!-- 검색 바(페이지2로 이동) -->
+<form method="get" action="{% url 'accounts:address_search' %}" role="search">
+  <input type="search" name="q" placeholder="지번, 도로명, 건물명으로 검색" enterkeyhint="search" />
+</form>
+
+  <p><a href="{% url 'accounts:address_pick_map' %}">🎯현재 위치로 찾기</a></p>
+
+  <!-- 현재 대표 주소 -->
+  <section>
+    {% if current %}
+      <div>
+        {{ current.address }} <strong>현재 설정된 주소</strong>
+        <!-- 대표 주소 삭제 버튼 -->
+        <form method="post" action="{% url 'accounts:address_delete' current.id %}" style="display:inline">
+          {% csrf_token %}
+          <button type="submit" title="삭제" aria-label="삭제">×</button>
+        </form>
+      </div>
+    {% else %}
+      <p>대표 주소가 설정되어 있지 않습니다.</p>
+    {% endif %}
+  </section>
+
+  <!-- 최근 기록 -->
+  <hr>
+  <section>
+    <h3>최근 기록</h3>
+    {% if recents %}
+      <ul>
+        {% for a in recents %}
+          <li>
+            <!-- 대표로 선택 -->
+            <a href="{% url 'accounts:address_select_primary' a.id %}">
+              {{ a.address }}
+            </a>
+
+            <!-- 항상 삭제 버튼 활성화 -->
+            <form method="post" action="{% url 'accounts:address_delete' a.id %}" style="display:inline">
+              {% csrf_token %}
+              <button type="submit" title="삭제" aria-label="삭제">×</button>
+            </form>
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p>최근 기록이 없습니다.</p>
+    {% endif %}
+  </section>
+</body>
+</html>
