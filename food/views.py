@@ -58,7 +58,8 @@ def main(request):
     allowed = {"mart", "cafe", "trad"}
     tab_raw = request.GET.get("tab")
     tab = normalize_tab(tab_raw, allowed)
-
+    if tab is None:
+        tab = "cafe"
     # 배너 쿼리: 노출 중 + 사용자 동(동네) 타깃
     banners = get_banners_for_main(user, tab, limit=5)
 
