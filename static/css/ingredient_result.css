@@ -50,6 +50,27 @@
   gap: 10px;
 }
 
+.basket-container {
+  position: relative;
+  display: inline-block;
+}
+
+.basket-count {
+  position: absolute;
+  right: -6px;
+  bottom: -1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  background: #545454;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 300;
+  border-radius: 50%;
+}
+
 .point img {
   width: 22px;
   height: 20px;
