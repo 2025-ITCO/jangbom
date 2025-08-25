@@ -36,6 +36,8 @@ body {
   flex-direction: column;
   align-items: stretch;
   overflow: hidden;
+    border : 1px solid #d9d9d9
+
 }
 
 .status-bar {
@@ -329,6 +331,10 @@ body {
   border-radius: 20px;
   border: none;
   cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .start {
