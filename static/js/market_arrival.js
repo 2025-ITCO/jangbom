@@ -1,81 +1,53 @@
-// getPoint.js
 document.addEventListener("DOMContentLoaded", () => {
-  const scroller = document.querySelector(".app-body");
-
-  // 상단 sticky 2줄(상태바+앱탑바) 높이만큼 여유
-  const rs = getComputedStyle(document.documentElement);
-  const statusH = parseInt(rs.getPropertyValue("--status-h")) || 44;
-  const topH = parseInt(rs.getPropertyValue("--apptop-h")) || 44;
-  const offset = statusH + topH + 10;
-
-  const alignUnderSticky = (el) => {
-    if (!scroller || !el) return;
-    const top =
-      el.getBoundingClientRect().top - scroller.getBoundingClientRect().top;
-    scroller.scrollBy({ top: top - offset, behavior: "smooth" });
-  };
-
-  // ========== 1) 입구 사진 확인하기 ==========
-  document.querySelectorAll(".section-title .center-arrow").forEach((arrow) => {
-    const section = arrow.closest(".section-title");
-    const titleEl = section?.querySelector(".section-title2") || section;
-    if (!section) return;
-
-    const toggle = () => {
-      section.classList.toggle("open");
-      const open = section.classList.contains("open");
-      // 아이콘 회전/검정 (CSS 트랜지션 있으면 자연스럽게 돌아감)
-      arrow.style.transform = open ? "rotate(180deg)" : "rotate(0deg)";
-      arrow.style.filter = open ? "brightness(0) saturate(100%)" : "";
-      if (open) alignUnderSticky(titleEl);
-    };
-
-    arrow.setAttribute("role", "button");
-    arrow.setAttribute("tabindex", "0");
-    arrow.addEventListener("click", toggle);
-    arrow.addEventListener("keydown", (e) => {
-      if (e.key === "Enter" || e.key === " ") {
-        e.preventDefault();
-        toggle();
-      }
-    });
+  // ▼ 드롭다운 완전 비활성화: 항상 펼쳐진 상태로 고정
+  // 1) "입구 사진 확인하기" 섹션 고정 펼침
+  document.querySelectorAll(".section-title").forEach((section) => {
+    section.classList.add("open"); // 항상 펼침
+    // 토글 화살표가 버튼처럼 작동하지 않도록 정리
+    const arrow = section.querySelector(".center-arrow");
+    if (arrow) {
+      arrow.removeAttribute("role");
+      arrow.removeAttribute("tabindex");
+      arrow.style.transform = ""; // 회전 제거
+      arrow.style.filter = "";    // 색상 보정 제거
+      // 혹시 CSS에서 커서가 pointer면 기본으로 돌리고 싶다면:
+      arrow.style.cursor = "default";
+      // 기존에 걸린 핸들러가 있을 수도 있으니 안전하게 교체
+      const clean = arrow.cloneNode(true);
+      arrow.replaceWith(clean);
+    }
   });
 
-  // ========== 2) 장바구니 체크리스트 ==========
-  document
-    .querySelectorAll("h4.section-title2 .center-arrow")
-    .forEach((arrow) => {
-      const heading = arrow.closest("h4.section-title2");
-      if (!heading) return;
+  // 2) "장바구니 체크리스트" 섹션 고정 펼침
+  document.querySelectorAll("h4.section-title2").forEach((heading) => {
+    heading.classList.add("open"); // 항상 펼침
+    const arrow = heading.querySelector(".center-arrow");
+    if (arrow) {
+      arrow.removeAttribute("role");
+      arrow.removeAttribute("tabindex");
+      arrow.style.transform = "";
+      arrow.style.filter = "";
+      arrow.style.cursor = "default";
+      const clean = arrow.cloneNode(true);
+      arrow.replaceWith(clean);
+    }
 
-      // 바로 다음 형제의 .checklist-card를 우선 찾고, 없으면 근처에서 보조 탐색
-      let panel = heading.nextElementSibling;
-      if (!panel || !panel.classList.contains("checklist-card")) {
-        panel = heading.parentElement?.querySelector(".checklist-card");
-      }
-
-      const toggle = () => {
-        const open = heading.classList.toggle("open");
-        if (panel) panel.classList.toggle("open", open);
-        arrow.style.transform = open ? "rotate(180deg)" : "rotate(0deg)";
-        arrow.style.filter = open ? "brightness(0) saturate(100%)" : "";
-        if (open) alignUnderSticky(heading);
-      };
-
-      arrow.setAttribute("role", "button");
-      arrow.setAttribute("tabindex", "0");
-      arrow.addEventListener("click", toggle);
-      arrow.addEventListener("keydown", (e) => {
-        if (e.key === "Enter" || e.key === " ") {
-          e.preventDefault();
-          toggle();
-        }
-      });
-    });
+    // 연결된 패널도 항상 열림 상태로
+    let panel = heading.nextElementSibling;
+    if (!panel || !panel.classList.contains("checklist-card")) {
+      panel = heading.parentElement?.querySelector(".checklist-card");
+    }
+    if (panel) {
+      panel.classList.add("open");
+      // transition 등으로 높이가 0이 되지 않도록 강제
+      panel.style.maxHeight = "none";
+      panel.style.opacity = "";
+      panel.style.overflow = "visible";
+    }
+  });
 });
 
-// getPoint.js (모달 열기/닫기)
-
+// ===== 모달 열기/닫기 (유지) =====
 document.addEventListener("DOMContentLoaded", () => {
   const scroller = document.querySelector(".app-body"); // 내부 스크롤 컨테이너
   const trigger = document.querySelector(".not-this-mart"); // "사진과 도착지가 다르다면?"
@@ -93,39 +65,26 @@ document.addEventListener("DOMContentLoaded", () => {
     lastFocus = document.activeElement;
     modal.classList.remove("hidden");
     modal.setAttribute("aria-hidden", "false");
-
-    // 스크롤 잠금
     scroller?.classList.add("no-scroll");
     document.body.classList.add("modal-open");
-
-    // 포커스 이동(접근성)
     (closeBtn || content).focus?.({ preventScroll: true });
   };
 
   const closeModal = () => {
     modal.classList.add("hidden");
     modal.setAttribute("aria-hidden", "true");
-
-    // 스크롤 잠금 해제
     scroller?.classList.remove("no-scroll");
     document.body.classList.remove("modal-open");
-
-    // 포커스 복귀
     lastFocus?.focus?.({ preventScroll: true });
   };
 
-  // 열기
   trigger.addEventListener("click", openModal);
-
-  // 닫기(X)
   closeBtn?.addEventListener("click", closeModal);
 
-  // 바깥 클릭 닫기 (오버레이 부분만)
   modal.addEventListener("click", (e) => {
     if (e.target === modal) closeModal();
   });
 
-  // ESC 닫기 + 탭 포커스 트랩
   document.addEventListener("keydown", (e) => {
     if (modal.classList.contains("hidden")) return;
 
@@ -153,7 +112,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // 버튼 동작(원하면 여기서 실제 액션 연결)
+  // 필요한 경우 여기에 실제 동작 연결
   callBtn?.addEventListener("click", () => {
     // 예: window.location.href = 'tel:010-0000-0000';
     closeModal();
